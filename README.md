@@ -12,3 +12,7 @@ Since it is VBScript, it works in any Windows
 
    client_id can be received by registration process on instagramm
    i would say MUST be received... do not reuse my id!!! (lol)
+
+
+Since Imstagram sends JSON  it would be great to rewrite it in JScript!
+ to do nice responce parcing 
