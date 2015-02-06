@@ -8,22 +8,30 @@ var objJSON = eval("(function(){return " + xmlHttpReq.responseText + ";})()");
  var myMsgBox=new ActiveXObject("wscript.shell")
 // myMsgBox.Popup (objJSON.meta.code)
 
+var fso  = new ActiveXObject("Scripting.FileSystemObject"); 
+var fh = fso.CreateTextFile("pop.html", 2, true); 
+fh.WriteLine( "<html><head></head><body> last 20 popular <br>" );
+
 for(var i in objJSON.data)
 {
      var imgUrl = objJSON.data[i].images.standard_resolution.url;
      //var name = objJSON.data[i].user.username;
      //myMsgBox.Popup ( imgUrl );
-     
+    
+    var ss=imgUrl.split("/");
+    var filename= ss[ss.length-1] ;
      
     xmlHttpReq.open("GET", imgUrl, false);
     xmlHttpReq.send();
-    
-            var objADOStream = new ActiveXObject("ADODB.Stream");
-            objADOStream.open();
-            objADOStream.type = 1; // Binary
-            objADOStream.write(xmlHttpReq.responseBody);
-            objADOStream.position = 0;
-            objADOStream.saveToFile("file"+i+".jpg", 2);
-            objADOStream.close();
-    
+    var objADOStream = new ActiveXObject("ADODB.Stream");
+    objADOStream.open();
+    objADOStream.type = 1; // Binary
+    objADOStream.write(xmlHttpReq.responseBody);
+    objADOStream.position = 0;
+    objADOStream.saveToFile(filename, 2);
+    objADOStream.close();
+    fh.WriteLine("<img src="+ filename +">")
 }
+
+fh.WriteLine( "</body></html>" ); 
+fh.Close(); 
