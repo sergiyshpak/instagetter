@@ -16,6 +16,10 @@ xml.Send
 txt2=xml.responseText
 'Msgbox  txt2
 
+Set htmlFSO = CreateObject( "Scripting.FileSystemObject" )
+Set htmlFile = htmlFSO.OpenTextFile( a+"_tag.html", 2, True )
+htmlFile.Write("<html><head></head><body> Images for tag "+a+"<br>")
+
 start=1
 do while 1<10
 'Msgbox start
@@ -59,12 +63,15 @@ oStream.type = adTypeBinary
 oStream.open
 oStream.write xml.responseBody
 
- oStream.savetofile "tag_"+a+"_"+ImageFile, adSaveCreateOverWrite
-
+oStream.savetofile "tag_"+a+"_"+ImageFile, adSaveCreateOverWrite
 oStream.close
 
+ htmlFile.Write("<img src="+ "tag_"+a+"_"+ImageFile +">")
 
 Loop
 
 set oStream = nothing
 Set xml = Nothing
+
+htmlFile.Write("</body></html>")
+htmlFile.Close( )
