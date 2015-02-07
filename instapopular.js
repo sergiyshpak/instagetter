@@ -15,7 +15,7 @@ fh.WriteLine( "<html><head></head><body> last 20 popular <br>" );
 for(var i in objJSON.data)
 {
      var imgUrl = objJSON.data[i].images.standard_resolution.url;
-     //var name = objJSON.data[i].user.username;
+     var name = objJSON.data[i].user.username;
      //myMsgBox.Popup ( imgUrl );
     
     var ss=imgUrl.split("/");
@@ -30,7 +30,7 @@ for(var i in objJSON.data)
     objADOStream.position = 0;
     objADOStream.saveToFile(filename, 2);
     objADOStream.close();
-    fh.WriteLine("<img src="+ filename +">")
+    fh.WriteLine("<a href=http://instagram.com/"+name+">"+name+"</a><br><img src="+ filename +"><hr>")
 }
 
 fh.WriteLine( "</body></html>" ); 
