@@ -55,7 +55,7 @@ if (objJSON.meta.code != 200)
 ///  new cli https://api.instagram.com/v1/tags/gun/media/recent?client_id=e8d6b06f7550461e897b45b02d84c23e
 
 var fso  = new ActiveXObject("Scripting.FileSystemObject"); 
-var fh = fso.CreateTextFile(searchTag+"_tag.html", 2, true); 
+var fh = fso.CreateTextFile("_"+searchTag+"_tag.html", 2, true); 
 fh.WriteLine( "<html><head></head><body> last 20 by tag "+searchTag+"<br>" );
 
 for(var i in objJSON.data)
