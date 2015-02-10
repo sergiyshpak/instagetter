@@ -33,14 +33,15 @@ var MsgBox = vb.Function('MsgBox');
 
 var searchTag = InputBox('Enter tag', 'insta');
 
+//https://api.instagram.com/v1/tags/gun/media/recent?client_id=e8d6b06f7550461e897b45b02d84c23e
 
 
 var xmlHttpReq = new ActiveXObject("MSXML2.ServerXMLHTTP.6.0");
-xmlHttpReq.open("GET", "https://api.instagram.com/v1/tags/"+searchTag+"/media/recent?client_id=58e5502e27644cee9bb2770ec28213c2", false);
+xmlHttpReq.open("GET", "https://api.instagram.com/v1/tags/"+searchTag+"/media/recent?client_id=e8d6b06f7550461e897b45b02d84c23e", false);
 xmlHttpReq.send();
 
-
 var objJSON = eval("(function(){return " + xmlHttpReq.responseText + ";})()");
+
 
 var myMsgBox=new ActiveXObject("wscript.shell")
 // myMsgBox.Popup (objJSON.meta.code)
@@ -51,8 +52,16 @@ if (objJSON.meta.code != 200)
    WScript.Quit(1);
 }
 
+/// "data":[]}
+if (objJSON.data.length == 0)
+{
+   myMsgBox.Popup("no rezults found");
+   WScript.Quit(1);
+}
+
+
 /// "code":400,"error_message":"The client used for authentication is no longer active."}}
-///  new cli https://api.instagram.com/v1/tags/gun/media/recent?client_id=e8d6b06f7550461e897b45b02d84c23e
+
 
 var fso  = new ActiveXObject("Scripting.FileSystemObject"); 
 var fh = fso.CreateTextFile("_"+searchTag+"_tag.html", 2, true); 
@@ -81,4 +90,8 @@ for(var i in objJSON.data)
 
 fh.WriteLine( "</body></html>" ); 
 fh.Close(); 
+
+
+var shell = WScript.CreateObject("WScript.Shell");
+shell.Run( "cmd /c  start _"+searchTag+"_tag.html");
 
