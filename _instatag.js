@@ -95,8 +95,10 @@ for(var i in objJSON.data)
     fh.WriteLine("<a href=http://instagram.com/"+name+">"+name+"</a><br><img src="+ filename +"><hr>")
 }
 
-
-
+///  getURL=objJSON.pagination.next_url
+/// do you want 20 more
+/// var answer = myMsgBox.Popup("do you want 20 more?",0,"title",4 )
+/// if ansver !=6    WScript.Quit(2);
 
 fh.WriteLine( "</body></html>" ); 
 fh.Close(); 
