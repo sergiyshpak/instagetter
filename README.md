@@ -1,7 +1,9 @@
 # instagetter
 getting pictures from instagramm and saving them locally
 
-Since it is VBScript, it works in any Windows (no it is JScript.. which call VBscript.. sometimes.. because JScript does not have popup dialog boxes... and that shit DOES NOT WORK ON WIN7,  so it is XP only... sad..)
+Since it is VBScript, it works in any Windows (no it is JScript.. (because of JSON) which call VBscript.. sometimes.. because JScript does not have popup dialog boxes... and that shit DOES NOT WORK ON WIN7,  so it is XP only... sad..)
+
+(probably i need to keep it as VBScript.. with ugly strings matching in JSON.. but it will work on Win7-8)
 
 
  takes latest picture from instagram user feed
