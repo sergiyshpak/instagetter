@@ -64,7 +64,7 @@ if (objJSON.meta.code != 200)
 //myMsgBox.Popup (xmlHttpReq.responseText)
 
 var personId=objJSON.data[0].id
-myMsgBox.Popup (personId)
+//myMsgBox.Popup (personId)
 
 xmlHttpReq = new ActiveXObject("MSXML2.ServerXMLHTTP.6.0");
 xmlHttpReq.open("GET", "https://api.instagram.com/v1/users/"+personId+"/media/recent/?client_id=e8d6b06f7550461e897b45b02d84c23e",false)
@@ -119,5 +119,5 @@ fh.Close();
 
 
 var shell = WScript.CreateObject("WScript.Shell");
-shell.Run( "cmd /c  start _"+searchTag+"_tag.html");
+shell.Run( "cmd /c  start _"+searchTag+"_name.html");
 
