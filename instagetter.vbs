@@ -7,7 +7,7 @@ a=InputBox("Enter insta name")
 'katwade
 
 rece1="https://api.instagram.com/v1/users/search?q="
-rece2="&client_id=58e5502e27644cee9bb2770ec28213c2"
+rece2="&client_id=e8d6b06f7550461e897b45b02d84c23e"
 url1=rece1+trim(a)+rece2
 
 'Msgbox url1
@@ -42,7 +42,7 @@ userId=mid(txt1,pos1, pos2-pos1)
 
 
 rece1="https://api.instagram.com/v1/users/"
-rece2="/media/recent/?client_id=58e5502e27644cee9bb2770ec28213c2"
+rece2="/media/recent/?client_id=e8d6b06f7550461e897b45b02d84c23e"
 URL2=rece1+userId+rece2
 
 xml.Open "GET", URL2, False
