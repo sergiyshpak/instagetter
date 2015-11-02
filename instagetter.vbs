@@ -7,7 +7,7 @@ a=InputBox("Enter insta name")
 'katwade
 
 rece1="https://api.instagram.com/v1/users/search?q="
-rece2="&client_id=58e5502e27644cee9bb2770ec28213c2"
+rece2="&client_id=e8d6b06f7550461e897b45b02d84c23e"
 url1=rece1+trim(a)+rece2
 
 'Msgbox url1
@@ -38,11 +38,11 @@ pos2=InStr(pos1, txt1,"""")
 userId=mid(txt1,pos1, pos2-pos1)
 'Msgbox userId
 
-'https://api.instagram.com/v1/users/213394178/media/recent/?client_id=58e5502e27644cee9bb2770ec28213c2
+'https://api.instagram.com/v1/users/213394178/media/recent/?client_id=e8d6b06f7550461e897b45b02d84c23e
 
 
 rece1="https://api.instagram.com/v1/users/"
-rece2="/media/recent/?client_id=58e5502e27644cee9bb2770ec28213c2"
+rece2="/media/recent/?client_id=e8d6b06f7550461e897b45b02d84c23e"
 URL2=rece1+userId+rece2
 
 xml.Open "GET", URL2, False
@@ -70,6 +70,9 @@ img1URL=mid(txt2,ipos1, ipos2-ipos1)
 img1URL2=replace(img1URL,"\","")
 'Msgbox img1URL2
 
+
+img1URL2=replace(img1URL2,"s640x640/sh0.08/e35/","")
+'Msgbox img1URL2
 
 fnPos=InStrRev(img1URL2,"/")
 urlLen=Len(img1URL2)

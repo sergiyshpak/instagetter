@@ -6,7 +6,7 @@ Const adSaveCreateNotExist = 1
 a=InputBox("Enter insta tag")     
 
 rece1="https://api.instagram.com/v1/tags/"
-rece2="/media/recent?client_id=58e5502e27644cee9bb2770ec28213c2"
+rece2="/media/recent?client_id=e8d6b06f7550461e897b45b02d84c23e"
 
 Set xml = CreateObject("Microsoft.XMLHTTP")
 URL2=rece1+a+rece2
@@ -39,6 +39,9 @@ img1URL=mid(txt2,ipos1, ipos2-ipos1)
 
 img1URL2=replace(img1URL,"\","")
 'Msgbox img1URL2
+
+
+img1URL2=replace(img1URL2,"s640x640/sh0.08/e35/","")
 
 
 fnPos=InStrRev(img1URL2,"/")

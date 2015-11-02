@@ -18,3 +18,6 @@ Since it is VBScript, it works in any Windows (no it is JScript.. (because of JS
 
 <strike>Since Imstagram sends JSON  it would be great to rewrite it in JScript!
  to do nice responce parcing  </strike>
+
+
+Instagram started to store HiRes pictures, starting to change code for that 11/2/2015
