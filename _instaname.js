@@ -94,11 +94,14 @@ for(var i in objJSON.data)
 {
      var imgUrl = objJSON.data[i].images.standard_resolution.url;
      var name = objJSON.data[i].user.username;
-     //myMsgBox.Popup ( imgUrl );
+    //myMsgBox.Popup ( imgUrl );
     
     var ss=imgUrl.split("/");
     var filename= ss[ss.length-1] ;
      
+    imgUrl=imgUrl.replace("s640x640/sh0.08/e35/","");
+    //myMsgBox.Popup ( imgUrl );
+
     xmlHttpReq.open("GET", imgUrl, false);
     xmlHttpReq.send();
     var objADOStream = new ActiveXObject("ADODB.Stream");
