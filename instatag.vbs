@@ -10,6 +10,7 @@ a=InputBox("Enter insta tag")
 rece1="https://api.instagram.com/v1/tags/"
 rece2="/media/recent?client_id="+superKey
 
+
 Set xml = CreateObject("Microsoft.XMLHTTP")
 URL2=rece1+a+rece2
 
@@ -36,6 +37,7 @@ img1URL=mid(jsonTxt,ipos1, ipos2-ipos1)
 'Msgbox img1URL
 img1URL2=replace(img1URL,"\","")
 'Msgbox img1URL2
+img1URL2=replace(img1URL2,"s640x640/sh0.08/e35/","")
 fnPos=InStrRev(img1URL2,"/")
 urlLen=Len(img1URL2)
 rem  standard_resolution":{"url":"
@@ -69,3 +71,7 @@ Set xml = Nothing
 
 htmlFile.Write("</body></html>")
 htmlFile.Close( )
+
+
+set shell = WScript.CreateObject("WScript.Shell")
+shell.Run "cmd /c  start "+a+"_tag.html"

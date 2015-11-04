@@ -59,3 +59,6 @@ for(var i in objJSON.data)
 
 fh.WriteLine( "</body></html>" ); 
 fh.Close(); 
+
+var shell = WScript.CreateObject("WScript.Shell");
+shell.Run( "cmd /c  start _pop"+dateStr+timeStr+".html");

@@ -38,11 +38,12 @@ ipos2=InStr(ipos1, jsonTxt,"""")
 start=iPos2
 
 img1URL=mid(jsonTxt,ipos1, ipos2-ipos1)
-'Msgbox img1URL
+
 
 img1URL2=replace(img1URL,"\","")
-'Msgbox img1URL2
 
+img1URL2=replace(img1URL2,"s640x640/sh0.08/e35/","")
+'Msgbox "fff2 "+img1URL2
 
 fnPos=InStrRev(img1URL2,"/")
 urlLen=Len(img1URL2)
@@ -51,6 +52,9 @@ rem  standard_resolution":{"url":"
 
 ImageFile = Mid(img1URL2,fnPos+1, urlLen-fnPos)
 'Msgbox ImageFile
+
+'https://scontent.cdninstagram.com/hphotos-xfa1/t51.2885-15/s640x640/sh0.08/e35/11370971_837216559694773_771634899_n.jpg
+'https://scontent.cdninstagram.com/hphotos-xfa1/t51.2885-15/11370971_837216559694773_771634899_n.jpg
 
 usernamePosStrart=InStr(start, jsonTxt,"username") +11
 usernamePosEnd=InStr(usernamePosStrart, jsonTxt,"""")
@@ -82,3 +86,7 @@ Set xml = Nothing
 
 htmlFile.Write("</body></html>")
 htmlFile.Close( )
+
+
+set shell = WScript.CreateObject("WScript.Shell")
+shell.Run "cmd /c  start "+a+strSafeDate+strSafeTime+"_popular.html"
