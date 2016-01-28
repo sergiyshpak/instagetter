@@ -76,7 +76,7 @@ oStream.type = adTypeBinary
 oStream.open
 oStream.write xml.responseBody
 
- oStream.savetofile a+"_"+ImageFile, adSaveCreateOverWrite
+ oStream.savetofile a+"\"+a+"_"+ImageFile, adSaveCreateOverWrite
 
 oStream.close
 
@@ -100,6 +100,14 @@ a=InputBox("Enter insta name")
 rece1="https://api.instagram.com/v1/users/search?q="
 rece2="&client_id=e8d6b06f7550461e897b45b02d84c23e"
 url1=rece1+trim(a)+rece2
+
+Dim FSO
+Set FSO = CreateObject("Scripting.FileSystemObject")
+
+If NOT (FSO.FolderExists(trim(a))) Then
+    FSO.CreateFolder(trim(a))
+End If
+
 
 'Msgbox url1
 'https://api.instagram.com/v1/users/search?q=katwade&client_id=58e5502e27644cee9bb2770ec28213c2
