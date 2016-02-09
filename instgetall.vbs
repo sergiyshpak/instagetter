@@ -55,13 +55,18 @@ img1URL2=replace(img1URL2,"s640x640/sh0.08/e35/","")
 'Msgbox img1URL2
 
 fnPos=InStrRev(img1URL2,"/")
-urlLen=Len(img1URL2)
+urlLen=Len(img1URL2)  ' shit they added something to the end for file name url ONLY FOR JPG!!!
+fnEndPos=InStrRev(img1URL2,"?")
 
+'msgbox fnEndPos
 
 rem  standard_resolution":{"url":"
 
-
+if fnEndPos>0 then
+ImageFile = Mid(img1URL2,fnPos+1, fnEndPos-fnPos-1)
+else
 ImageFile = Mid(img1URL2,fnPos+1, urlLen-fnPos)
+end if
 
 'Msgbox ImageFile
 
