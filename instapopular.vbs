@@ -46,15 +46,14 @@ img1URL2=replace(img1URL2,"s640x640/sh0.08/e35/","")
 'Msgbox "fff2 "+img1URL2
 
 fnPos=InStrRev(img1URL2,"/")
-urlLen=Len(img1URL2)
+urlLen=Len(img1URL2)  ' shit they added something to the end for file name  ONLY FOR JPG!!!
+fnEndPos=InStrRev(img1URL2,"?")
 
-rem  standard_resolution":{"url":"
-
+if fnEndPos>0 then
+ImageFile = Mid(img1URL2,fnPos+1, fnEndPos-fnPos-1)
+else
 ImageFile = Mid(img1URL2,fnPos+1, urlLen-fnPos)
-'Msgbox ImageFile
-
-'https://scontent.cdninstagram.com/hphotos-xfa1/t51.2885-15/s640x640/sh0.08/e35/11370971_837216559694773_771634899_n.jpg
-'https://scontent.cdninstagram.com/hphotos-xfa1/t51.2885-15/11370971_837216559694773_771634899_n.jpg
+end if
 
 usernamePosStrart=InStr(start, jsonTxt,"username") +11
 usernamePosEnd=InStr(usernamePosStrart, jsonTxt,"""")
